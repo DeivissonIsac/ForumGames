@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="container d-flex justify-content-center">
+        <div class="card shadow bg-dark text-white w-auto">
+            <div class="d-flex p-3 align-items-center flex-column flex-lg-row">
+                <div class="image">
+                    <img src="{{ foto_perfil }}" class="rounded" width="200">
+                </div>
+                <div class="w-100 p-3">
+                   <h4 class="mb-0 mt-0" style="width: 246px;">{{ current_user.username }}</h4>
+                   <span><p style="width: 246px;">{{ current_user.email }}<p></span>
+                   <div class="p-2 mt-2 bg-primary d-flex justify-content-around rounded text-white stats">
+                       <div class="d-flex flex-column justify-content-center">
+                           <span class="articles">Jogos:
+                               {% if "Nao Informado" in current_user.jogos %}
+                               <span class="number1">0</span>
+                               {% else %}
+                               <span class="number1">{{ current_user.jogos.count(";") + 1 }}</span>
+                               {% endif %}
+                           </span>
+                       </div>
+                       <div class="d-flex flex-column">
+                           <span class="rating">Posts:<span class="number3">{{ current_user.contar_posts() }}</span></span>
+                       </div>
+                   </div>
+                    <div class="d-flex align-items-center justify-content-evenly">
+                        <div class="d-flex mt-2">
+                           <a href="{{ url_for('editar_perfil') }}"><button class="btn btn-sm btn-primary ml-2 px-4 h-auto">Editar</button></a>
+                        </div>
+                        {% if "Nao Informado" not in current_user.jogos %}
+                        <div class="dropdown mt-2 ms-2">
+                           <button class="btn btn-secondary" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                            Jogos
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                               {% for jogo in current_user.jogos.split(';') %}
+                                <li class="text-center fw-bold">
+                                    {{ jogo }}
+                                    {% if loop.index < current_user.jogos.split(';')|length %}
+                                        <hr class="my-1">
+                                    {% endif %}
+                                </li>
+                               {% endfor %}
+                            </ul>
+                       </div>
+                           {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+    {% block form_editar_perfil %}
+    {% endblock %}
+
+{% endblock %}

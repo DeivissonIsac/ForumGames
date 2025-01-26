@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="container">
+    <h1 class="m-0 text-center">Faça o login ou crie sua conta.</h1>
+    <hr>
+    <div class="row flex-column flex-lg-row">
+        <div class="col">
+            <form method="POST" action="" class="border border-2 p-5 shadow p-3 mb-5 bg-body rounde" style="border-radius: 15px">
+                {{ form_login.csrf_token }}
+                <fieldset>
+                    <legend>Login</legend>
+                    <div class="form-group mt-3">
+                        {{ form_login.email.label(class="form-control-label") }}
+
+                        {% if form_login.email.errors %}
+                            {{ form_login.email(class="form-control is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form_login.email.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                            {{ form_login.email(class="form-control") }}
+                        {% endif %}
+                    </div>
+                    <div class="form-group mt-3">
+                        {{ form_login.senha.label(class="form-control-label") }}
+                        {{ form_login.senha(class="form-control") }}
+                    </div>
+                    <div class="form-group mt-3">
+                        {{ form_login.permancer_conectado.label(class="form-check-label") }}
+                        {{ form_login.permancer_conectado(class="form-check-input") }}
+                    </div>
+                </fieldset>
+                    {{ form_login.submit_login(class="btn btn-primary mt-3")}}
+            </form>
+        </div>
+        <div class="col">
+            <form method="post" action="" class="border border-2 p-5 shadow p-3 mb-5 bg-body rounde" style="border-radius: 15px">
+                {{ form_criar.csrf_token }}
+                <fieldset>
+                    <legend>Criar Conta</legend>
+                    <div class="form-group mt-3">
+                        {{ form_criar.username.label(class="form-control-label") }}
+                        {{ form_criar.username(class="form-control") }}
+                    </div>
+                    <div class="form-group mt-3">
+                        {{ form_criar.email.label(class="form-control-label") }}
+                        {% if form_criar.email.errors %}
+                            {{ form_criar.email(class="form-control is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form_criar.email.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                            {{ form_criar.email(class="form-control") }}
+                        {% endif %}
+                    </div>
+                    <div class="form-group mt-3">
+                        {{ form_criar.senha.label(class="form-control-label") }}
+                        {{ form_criar.senha(class="form-control") }}
+                    </div>
+                    <div class="form-group mt-3">
+                        {{ form_criar.confirmar.label(class="form-control-label") }}
+                        {% if form_criar.confirmar.errors %}
+                            {{ form_criar.confirmar(class="form-control is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form_criar.confirmar.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                            {{ form_criar.confirmar(class="form-control") }}
+                        {% endif %}
+                    </div>
+                </fieldset>
+                    {{ form_criar.submit_criar_conta(class="btn btn-primary mt-3") }}
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

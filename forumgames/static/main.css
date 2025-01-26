@@ -1,0 +1,81 @@
+.card{
+  width: 400px;
+  border: none;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.stats{
+    background: #f2f5f8 !important;
+    color: #000 !important;
+}
+
+.articles{
+    font-size:15px;
+}
+
+.number1{
+    font-weight:500;
+}
+
+.followers{
+    font-size:10px;
+    color: #a1aab9;
+}
+
+.number2{
+    font-weight:500;
+}
+
+.rating{
+    font-size:15px;
+}
+
+.number3{
+    font-weight:500;
+}
+
+.alert {
+    position: fixed;
+    margin-top: 0px;
+    right: -500px;
+    z-index: 1000;
+    transition: right 0.5s ease-in-out;
+}
+
+.show-alert {
+    right: 20px;
+}
+
+.custom-dropdown {
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.custom-dropdown.show {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+.selectable-label {
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+#formulario-editar {
+    display: none; /* Inicialmente oculto */
+    transition: all 0.5s ease; /* Transição suave */
+    transform: translateY(20px); /* Inicia um pouco para baixo */
+}
+
+#formulario-editar.show {
+    display: block; /* Mostra o formulário */
+    transform: translateY(0); /* Move para a posição original */
+}
+
+#formulario-editar.hide {
+    transform: translateY(20px); /* Move para baixo ao esconder */
+    opacity: 0; /* Opcional: Fade out */
+}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+    <div class="container d-flex justify-content-center">
+            <div class="w-75 mt-3">
+                <form method="POST" action="" class="border border-2 p-5 shadow mb-3 bg-body rounde" style="border-radius: 15px">
+                    {{ form.csrf_token }}
+                    <fieldset>
+                        <legend>Criar Post</legend>
+                        <div class="form-group mt-3">
+                            {{ form.titulo.label(class="form-control-label") }}
+                            {{ form.titulo(class="form-control") }}
+                        </div>
+                        <div id="editor-container"></div>
+                        <div class="form-group mt-3 h-">
+                            {{ form.corpo.label(class="form-control-label") }}
+                            {{ form.corpo(class="form-control") }}
+                        </div>
+                        <div class="d-flex justify-content-end mt-2">
+                            {{ form.submit_criar_post(class="btn btn-primary")}}
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+    </div>
+{% endblock %}
